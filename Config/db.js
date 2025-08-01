@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
-const connectDb = async ()=>{
-    try {
-        await mongoose.connect(process.env.MONGO_URI)
-        console.log("Connected to DataBase...!")
-    } catch (error) {
-        console.log(error)
-    }
-}
+const uri = "mongodb+srv://innosphear:ujjwal@cluster0.vqzto1i.mongodb.net/";
 
-export default connectDb
+mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+.then(() => console.log("✅ Connected to MongoDB"))
+.catch(err => console.error("❌ Failed to connect:", err));
+
+export default connectDb;
